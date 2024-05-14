@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'angular-google-maps' title`, () => {
+  it(`should have the 'word-accuracy' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('angular-google-maps');
+    expect(app.title).toEqual('word-accuracy');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, angular-google-maps');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, word-accuracy');
   });
 });

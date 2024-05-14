@@ -1,4 +1,4 @@
-import { Component, inject, type OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { WrapperWordTestComponent } from './wrapper-word-test/wrapper-word-test.component';
 
@@ -9,17 +9,9 @@ import { WrapperWordTestComponent } from './wrapper-word-test/wrapper-word-test.
   styleUrl: './app.component.scss',
   imports: [RouterOutlet, WrapperWordTestComponent],
 })
-export class AppComponent implements OnInit{
+export class AppComponent {
   router = inject(Router);
 
-  loadApp!: boolean;
+  title = 'word-accuracy';
 
-  ngOnInit(): void {
-    this.loadApp = true ;
-  //   setTimeout(() => {
-  //     this.router.navigate(['word-test'])
-  //     this.loadApp = true;
-  //   }, 1000)
-  }
-  
 }
