@@ -1,0 +1,41 @@
+<main>
+  <div class="timer">
+    <app-timer />
+  </div>
+
+  <div class="score">
+    <div class="card">
+      <p class="count">{{ stateService.correct() }}</p>
+      <p>words/min</p>
+    </div>
+    <div class="card">
+      <p class="count">{{ stateService.char() }}</p>
+      <p>chars/min</p>
+    </div>
+    <div class="card">
+      <p class="count">{{ stateService.accuracy() }}</p>
+      <p>% accuracy</p>
+    </div>
+  </div>
+
+  <div class="container" (click)="focusOnClick()">
+
+    @if ( isCompleted() ) {
+    <ng-container #outlet [ngTemplateOutlet]="mask"></ng-container>
+    }
+    @else {
+    <div class="words">
+      @for (word of typingWord(); track $index) {
+      <app-wordtest [typingWord]="word" [isContentEditable]="currentWord() === $index ? true : false" />
+    }
+    </div>
+    }
+
+  </div>
+</main>
+
+<ng-template #mask>
+  <div class="mask">
+    <button class="try-again-btn" (click)="tryAgain()">Try Again</button>
+  </div>
+</ng-template>

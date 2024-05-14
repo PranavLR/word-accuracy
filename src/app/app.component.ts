@@ -1,13 +1,25 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, inject, type OnInit } from '@angular/core';
+import { Router, RouterOutlet } from '@angular/router';
+import { WrapperWordTestComponent } from './wrapper-word-test/wrapper-word-test.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
+  imports: [RouterOutlet, WrapperWordTestComponent],
 })
-export class AppComponent {
-  title = 'angular-google-maps';
+export class AppComponent implements OnInit{
+  router = inject(Router);
+
+  loadApp!: boolean;
+
+  ngOnInit(): void {
+    this.loadApp = true ;
+  //   setTimeout(() => {
+  //     this.router.navigate(['word-test'])
+  //     this.loadApp = true;
+  //   }, 1000)
+  }
+  
 }

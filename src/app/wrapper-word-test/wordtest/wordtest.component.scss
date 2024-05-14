@@ -1,0 +1,26 @@
+.wrapper {
+  position: relative;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+
+  .editable,
+  .content {
+    padding: 7px 5px;
+    outline: none;
+    transition: all 0.2s ease-in-out;
+    white-space: nowrap;
+    overflow: hidden;
+    text-rendering: optimizeSpeed;
+  }
+
+  .editable {
+    caret-color: black;
+    padding-right: 0;
+  }
+
+  .content {
+    color: rgba(0, 0, 0, 0.447);
+    padding-left: 0;
+  }
+}

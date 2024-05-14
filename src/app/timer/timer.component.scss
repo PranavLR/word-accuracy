@@ -1,0 +1,59 @@
+.wrapper-timer {
+  .warpper-count {
+    width: 120px;
+    height: 120px;
+    margin: auto;
+    border-radius: 50%;
+    background: conic-gradient(var(--bgColor), var(--bgColor) var(--progress), #fff 0%);
+    // background: conic-gradient(#ffd000, #ffd000 var(--progress), #fff 0%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 200ms ease-in-out;
+
+    .count,
+    .completed {
+      background-color: #fff;
+      width: 92%;
+      height: 92%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .count {
+      font-size: 2rem;
+      span:first-child {
+        font-weight: bold;
+        font-size: 1.5em;
+      }
+      span:last-child {
+        font-size: 0.5em;
+      }
+    }
+    .completed {
+      overflow: hidden;
+    }
+  }
+}
+
+
+// .circle:hover {
+//   /* calculate using: (2 * PI * R) */
+//   stroke-dasharray: 239;
+//   stroke-dashoffset: 239;
+//   animation-iteration-count: infinite;
+//   animation-name: rotate;
+//   animation-duration: 2s;
+//   animation-direction: alternate;
+//   animation-timing-function: linear;
+// }
+
+// @keyframes rotate {
+//   to {
+//     stroke-dashoffset: 0;
+//   }
+// }

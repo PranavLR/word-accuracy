@@ -1,0 +1,11 @@
+<div class="wrapper" #wrapper>
+    <div class="editable"
+        [style.color]="isContentEditable() ? (success() ? '#008000' : '#ff0000') : (success() ? '#00800050' : '#ff000050')"
+        (keydown)="keydownEvent($event)" (input)="change($event)"
+        [attr.contenteditable]="isContentEditable() ? 'true' : 'false'" [autofocus]="true"
+        [style.textDecoration]="success() ? '' : 'line-through'" #editableDiv> </div>
+        
+    <div class="content">
+        {{ toType.join('') }}
+    </div>
+</div>
