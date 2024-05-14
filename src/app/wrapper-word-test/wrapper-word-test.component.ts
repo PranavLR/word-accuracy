@@ -36,6 +36,7 @@ export class WrapperWordTestComponent implements OnInit, OnDestroy, AfterViewIni
           this.stateService.wrong.set(0);
           this.stateService.char.set(0);
           this.stateService.accuracy.set(0);
+          this.stateService.currentWord$.next(0);
         }
       }
     })
@@ -54,7 +55,9 @@ export class WrapperWordTestComponent implements OnInit, OnDestroy, AfterViewIni
         if (value) {
           this.currentWord.set(value);
           this.accuracy();
-          this.addFocusOnElement(this.currentWord());
+          setTimeout(() => {
+            this.addFocusOnElement(this.currentWord());
+          })
         }
       }
     })
@@ -73,13 +76,11 @@ export class WrapperWordTestComponent implements OnInit, OnDestroy, AfterViewIni
   }
 
   addFocusOnElement(campareWith: number) {
-    setTimeout(() => {
       this.wordtestComponent.forEach((child, index) => {
         if (index === campareWith) {
           child.editableDiv.nativeElement.focus();
         }
       });
-    })
   }
 
   focusOnClick() {
