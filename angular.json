@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "word-accuracy": {
+    "angular-google-maps": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/word-accuracy",
+            "outputPath": "dist/angular-google-maps",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -62,10 +62,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "word-accuracy:build:production"
+              "buildTarget": "angular-google-maps:build:production"
             },
             "development": {
-              "buildTarget": "word-accuracy:build:development"
+              "buildTarget": "angular-google-maps:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -73,7 +73,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "word-accuracy:build"
+            "buildTarget": "angular-google-maps:build"
           }
         },
         "test": {

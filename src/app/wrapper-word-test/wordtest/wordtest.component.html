@@ -4,7 +4,7 @@
         (keydown)="keydownEvent($event)" (input)="change($event)"
         [attr.contenteditable]="isContentEditable() ? 'true' : 'false'" [autofocus]="true"
         [style.textDecoration]="success() ? '' : 'line-through'" #editableDiv> </div>
-        
+
     <div class="content">
         {{ toType.join('') }}
     </div>

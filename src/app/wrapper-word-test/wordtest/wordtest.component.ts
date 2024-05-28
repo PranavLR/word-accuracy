@@ -14,18 +14,25 @@ export class WordtestComponent implements OnInit {
   stateService = inject(StateService);
 
   typingWord = input.required<string>();
-  // index = input.required<number>();
-  isContentEditable = input<boolean>(false);
+  index = input.required<number>();
+  currentCharEmit = output<string>();
+  currentWordEmit = output<number>();
+  // correctWordEmit = output<void>();
+  // wrongWordEmit = output<void>();
 
   type = computed(() => {
     return this.typingWord();
   });
   toType!: Array<string>;
   success = signal<boolean>(true);
+  isContentEditable = signal<boolean>(true);
   
+  offsetWidth: any
+  @ViewChild('wrapper') wrapper!: ElementRef;
   @ViewChild('editableDiv') editableDiv!: ElementRef;
 
   ngOnInit(): void {
+    // this.type.set(this.typingWord());
     this.toType = this.type().split('');
   }
 
@@ -33,10 +40,11 @@ export class WordtestComponent implements OnInit {
     event.preventDefault();
 
     const value = (event.target as HTMLDivElement)?.textContent || '';
+    // console.log('value: ', value);
     const length = value.length;
     const data = event.data
     
-    this.stateService.currentChar$.next(event?.data);
+    this.currentCharEmit.emit(event?.data)
     
     if (this.type().startsWith(value) || data === ' ') {
       this.success.set(true);
@@ -55,22 +63,22 @@ export class WordtestComponent implements OnInit {
     
     if(event.code === 'Enter' || event.code === 'NumpadEnter' || event.code === 'Space') {
 
+      this.toType = [];
+
       if (value === this.typingWord()) {
         this.success.set(true);
+        // this.correctWordEmit.emit();
         this.stateService.correct.update(val => val+1)
-        
-        this.stateService.char.update((val) => val + this.typingWord().length)
+
       }else {
         this.success.set(false);
+        // this.wrongWordEmit.emit();
         this.stateService.wrong.update(val => val+1)
       }
-      
-      this.toType = [];
-      this.stateService.currentWord$.next(this.stateService.currentWord$.getValue() + 1);
+      this.isContentEditable.set(false);
+      this.currentWordEmit.emit(this.index() + 1);      
+
     }
   }
 
 }
-
-
-

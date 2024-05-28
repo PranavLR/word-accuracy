@@ -4,21 +4,20 @@
   </div>
 
   <div class="score">
-    <div class="card">
+    <div class="card correct">
       <p class="count">{{ stateService.correct() }}</p>
-      <p>words/min</p>
+      <p>correct</p>
     </div>
-    <div class="card">
-      <p class="count">{{ stateService.char() }}</p>
-      <p>chars/min</p>
+    <div class="ashok-chakra">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSptx7LUCN-lKYbtw_Wa8hnE5-4EQw0-MnEfA&usqp=CAU" height="90px" style="mix-blend-mode: darken;">
     </div>
-    <div class="card">
-      <p class="count">{{ stateService.accuracy() }}</p>
-      <p>% accuracy</p>
+    <div class="card wrong">
+      <p class="count">{{ stateService.wrong() }}</p>
+      <p>wrong</p>
     </div>
   </div>
 
-  <div class="container" (click)="focusOnClick()">
+  <div class="container" (click)="focusOnClick()" #container>
 
     @if ( isCompleted() ) {
     <ng-container #outlet [ngTemplateOutlet]="mask"></ng-container>
@@ -26,8 +25,9 @@
     @else {
     <div class="words">
       @for (word of typingWord(); track $index) {
-      <app-wordtest [typingWord]="word" [isContentEditable]="currentWord() === $index ? true : false" />
-    }
+      <app-wordtest [typingWord]="word" [index]="$index" (currentWordEmit)="currentWordEmit($event)"
+        (currentCharEmit)="currentCharEmit($event)" />
+      }
     </div>
     }
 
@@ -35,7 +35,13 @@
 </main>
 
 <ng-template #mask>
+  <div class="lotus">
+    <img src="https://images.cnbctv18.com/wp-content/uploads/2018/12/BJP_LOSS.gif?impolicy=website&width=345&height=264">
+  </div>
   <div class="mask">
     <button class="try-again-btn" (click)="tryAgain()">Try Again</button>
+  </div>
+  <div class="lotus">
+    <img src="https://images.cnbctv18.com/wp-content/uploads/2018/12/BJP_LOSS.gif?impolicy=website&width=345&height=264">
   </div>
 </ng-template>
